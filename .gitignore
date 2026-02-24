@@ -15,3 +15,7 @@ git-credentials
 # Temporary files
 *.tmp
 *.temp
+
+# Binary/Sensitive Files (Moved to local only)
+*.pdf
+*.mp4

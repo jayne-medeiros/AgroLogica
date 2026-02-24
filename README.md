@@ -6,16 +6,10 @@
 
 O projeto utiliza a gamificação para ensinar conceitos fundamentais de gestão rural, ajudando produtores a visualizarem suas propriedades de forma estratégica ("um raio-x").
 
-### Conteúdo Disponível neste Repositório:
-- **`index.html`**: Landing page para acesso e download dos materiais.
-- **`jogo-completo.pdf`**: Tabuleiros, cartas e regras para as versões Extensão Rural, Kids e PRO.
-- **`resumo-executivo.pdf`**: Documentação estratégica sobre a metodologia e o impacto do jogo.
-- **`kit-apresentacao.pdf`**: Materiais visuais para escolas, eventos e apresentações técnicas.
-- **`video.mp4`**: Vídeo demonstrativo do projeto.
+### Sobre os Materiais
+Os materiais educativos (PDFs e Vídeos) do projeto são de uso controlado para preservar a integridade metodológica e os dados dos realizadores. 
 
-## 🎲 Como Utilizar
-
-Os materiais foram desenvolvidos para serem impressos e aplicados em dinâmicas de grupo, salas de aula ou no ambiente familiar, estimulando o diálogo sobre sucessão familiar e eficiência produtiva.
+Este repositório contém o código-fonte da landing page do projeto.
 
 ---
 
