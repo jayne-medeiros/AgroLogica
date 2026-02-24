@@ -1,0 +1,17 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Personal/Sensitive
+.env
+*.log
+git-credentials
+
+# Temporary files
+*.tmp
+*.temp

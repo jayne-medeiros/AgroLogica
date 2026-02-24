@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroLógica: Um Raio-X da Propriedade</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Identidade Visual do Material */
+            --cor-fundo: #F9F5EA;       /* Creme Papel */
+            --verde-agro: #43A047;      /* Verde Tabuleiro */
+            --verde-escuro: #1B5E20;    /* Verde Texto/Borda */
+            --laranja-sol: #F57C00;     /* Laranja Destaque */
+            --azul-ceu: #0288D1;        /* Azul Kids/Kit */
+            --marrom-terra: #5D4037;    /* Texto Geral */
+            --borda-card: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--marrom-terra);
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(#d7ccc8 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        h1, h2, h3, .btn {
+            font-family: 'Fredoka One', cursive;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--verde-agro);
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 8px dashed var(--laranja-sol);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 3px 3px 0 var(--verde-escuro);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            background: rgba(0,0,0,0.2);
+            color: #fff;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(67,160,71,0.1) 0%, rgba(249,245,234,0) 100%);
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            color: var(--verde-escuro);
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        /* --- VÍDEO VERTICAL (Estilo Mobile) --- */
+        .video-section {
+            padding: 0 20px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 360px; /* Largura de um celular grande */
+            background: #fff;
+            padding: 10px;
+            border: 6px solid var(--verde-agro);
+            border-radius: 30px; /* Bordas bem redondas estilo celular */
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.15); /* Sombra dura estilo cartoon */
+            position: relative;
+        }
+
+        /* Pinos decorativos nos cantos */
+        .pin {
+            width: 10px; height: 10px; background: var(--laranja-sol);
+            border-radius: 50%; position: absolute; border: 2px solid #fff; z-index: 2;
+            box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+        }
+        .tl { top: 12px; left: 12px; } .tr { top: 12px; right: 12px; }
+        .bl { bottom: 12px; left: 12px; } .br { bottom: 12px; right: 12px; }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            /* Proporção 9:16 (Vertical) */
+            padding-bottom: 177.77%; 
+            height: 0;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- CARDS DE DOWNLOAD (GRID RESPONSIVO) --- */
+        .downloads-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+        }
+
+        .section-header { text-align: center; margin-bottom: 30px; }
+        .section-header h2 { font-size: 2rem; color: var(--marrom-terra); margin-bottom: 5px; }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .doc-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid #ddd;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .doc-card:hover { transform: translateY(-5px); border-color: var(--verde-agro); }
+
+        .card-header {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-bottom: 4px solid rgba(0,0,0,0.1);
+        }
+
+        .bg-verde { background-color: var(--verde-agro); }
+        .bg-laranja { background-color: var(--laranja-sol); }
+        .bg-azul { background-color: var(--azul-ceu); }
+
+        .card-header h3 { margin: 0; font-size: 1.4rem; text-shadow: 2px 2px 0 rgba(0,0,0,0.2); }
+        .card-header span { font-size: 0.8rem; font-weight: 900; opacity: 0.95; letter-spacing: 1px; font-family: 'Nunito'; text-transform: uppercase; }
+
+        .card-body {
+            padding: 25px;
+            background: #fff;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+            flex-grow: 1; /* Empurra o botão para baixo */
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            font-weight: 800;
+            color: var(--marrom-terra);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li::before {
+            content: '✔';
+            display: inline-block;
+            color: var(--verde-agro);
+            margin-right: 8px;
+            font-weight: 900;
+            font-size: 1rem;
+        }
+
+        /* Botão 3D */
+        .btn-download {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 900;
+            font-family: 'Nunito';
+            font-size: 1rem;
+            color: white;
+            border: none;
+            position: relative;
+            top: 0;
+            transition: all 0.1s;
+            margin-top: auto; 
+            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+        }
+
+        .btn-download:active { top: 4px; box-shadow: 0 0 0 rgba(0,0,0,0.2); }
+
+        .btn-verde { background-color: var(--verde-agro); }
+        .btn-laranja { background-color: var(--laranja-sol); }
+        .btn-azul { background-color: var(--azul-ceu); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #fff;
+            border-top: 8px solid var(--verde-agro);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .partners {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-weight: 900;
+            color: var(--verde-agro);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Ajustes Mobile */
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 1.8rem; }
+            .logo { font-size: 1.8rem; }
+            .video-container { width: 85%; padding: 8px; border-width: 4px; }
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">AgroLógica</h1>
+        <div class="subtitle">UM RAIO-X DA PROPRIEDADE</div>
+    </header>
+
+    <section class="hero">
+        <div style="font-size: 3rem; margin-bottom: 10px;">👩‍🌾🎲🌽</div>
+        <h2>Aprenda a Gerir o Campo Jogando!</h2>
+        <p>Conectando famílias rurais, jovens e sucessores na busca por soluções para os desafios do agro.</p>
+    </section>
+
+    <section class="video-section">
+        <div class="video-container">
+            <div class="pin tl"></div><div class="pin tr"></div><div class="pin bl"></div><div class="pin br"></div>
+            <div class="video-wrapper">
+                <video controls playsinline>
+                    <source src="video.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="downloads-section">
+        <div class="section-header">
+            <h2>Materiais Disponíveis</h2>
+            <p>Baixe os arquivos para imprimir e aplicar.</p>
+        </div>
+
+        <div class="cards-grid">
+            
+            <div class="doc-card">
+                <div class="card-header bg-verde">
+                    <h3>Jogo Completo</h3>
+                    <span>TODAS AS VERSÕES</span>
+                </div>
+                <div class="card-body">
+                    <p>O kit definitivo contendo tabuleiros, cartas e regras para todas as modalidades.</p>
+                    <ul class="feature-list">
+                        <li>AgroLógica Extensão Rural</li>
+                        <li>AgroLógica Kids (Sol & Gotinha)</li>
+                        <li>AgroLógica PRO (Gestão Avançada)</li>
+                    </ul>
+                    <a href="jogo-completo.pdf" class="btn-download btn-verde" download>
+                        ⬇ Baixar PDF Completo
+                    </a>
+                </div>
+            </div>
+
+            <div class="doc-card">
+                <div class="card-header bg-laranja">
+                    <h3>Resumo Executivo</h3>
+                    <span>SOBRE O PROJETO</span>
+                </div>
+                <div class="card-body">
+                    <p>Documento estratégico que explica a metodologia e o impacto do jogo.</p>
+                    <ul class="feature-list">
+                        <li>O Desafio no Campo</li>
+                        <li>Passo a Passo para Aplicação</li>
+                        <li>Resultados e Impacto</li>
+                    </ul>
+                    <a href="resumo-executivo.pdf" class="btn-download btn-laranja" download>
+                        ⬇ Baixar Resumo
+                    </a>
+                </div>
+            </div>
+
+            <div class="doc-card">
+                <div class="card-header bg-azul">
+                    <h3>Kit Apresentação</h3>
+                    <span>MATERIAL VISUAL</span>
+                </div>
+                <div class="card-body">
+                    <p>Slides e materiais visuais para apresentar o projeto em eventos e escolas.</p>
+                    <ul class="feature-list">
+                        <li>Visual do Tabuleiro</li>
+                        <li>Exemplos de Cartas</li>
+                        <li>Conceitos de Serious Game</li>
+                    </ul>
+                    <a href="kit-apresentacao.pdf" class="btn-download btn-azul" download>
+                        ⬇ Baixar Kit
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <span style="font-weight: bold; color: #999; font-size: 0.9rem;">APOIO E REALIZAÇÃO:</span>
+        <div class="partners">
+            <span>SICREDI</span> • 
+            <span>COMISSÃO JOVEM</span> • 
+            <span>SINDICATO RURAL DE VIAMÃO</span>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 30px; opacity: 0.7;">&copy; 2025 AgroLógica. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
